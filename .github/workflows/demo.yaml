@@ -3,9 +3,6 @@ name: Demo
 on:
   push:
   pull_request:
-  schedule:
-    # run monthly on the first day of the month
-    - cron: '30 12 1 * *'
   workflow_dispatch: # allow to be run on-demand
 
 concurrency:
@@ -22,30 +19,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
+        os: ["ubuntu-latest"]
         base: ["base/", "-e base/"]
-        task1: ["task1/", "-e task1/"]
-        # task2 is always fully installed
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3
-      - run: python -m pip install --upgrade pip
-      - run: python -m pip install $BASE $TASK1 ./task2
-        env:
-          BASE: ${{ matrix.base }}
-          TASK1: ${{ matrix.task1 }}
+      - uses: hynek/setup-cached-uv@v2
+      - run: uv venv
       - name: Demonstrate locations and versions of imports
-        run: |
-          import myproj
-          import myproj.tasks.task1
-          import myproj.tasks.task2
-
-          print(myproj)
-          print(myproj.__version__)
-          print(myproj.tasks.task1)
-          print(myproj.tasks.task1.__version__)
-          print(myproj.tasks.task2)
-          print(myproj.tasks.task2.__version__)
-        shell: python
+        run: uv run demo.py

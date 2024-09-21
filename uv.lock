@@ -1,0 +1,42 @@
+version = 1
+requires-python = ">=3.7"
+
+[manifest]
+members = [
+    "myproj",
+    "myproj-task1",
+    "myproj-task2",
+    "toplevel",
+]
+
+[[package]]
+name = "myproj"
+version = "0.1.dev19+g1143fac"
+source = { editable = "base" }
+
+[[package]]
+name = "myproj-task1"
+version = "0.1.dev19+g1143fac"
+source = { editable = "task1" }
+
+[[package]]
+name = "myproj-task2"
+version = "0.1.dev19+g1143fac"
+source = { editable = "task2" }
+
+[[package]]
+name = "toplevel"
+version = "0+local"
+source = { virtual = "." }
+dependencies = [
+    { name = "myproj" },
+    { name = "myproj-task1" },
+    { name = "myproj-task2" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "myproj", editable = "base" },
+    { name = "myproj-task1", editable = "task1" },
+    { name = "myproj-task2", editable = "task2" },
+]

@@ -1,0 +1,22 @@
+[project]
+name = "toplevel"
+dependencies = ["myproj", "myproj-task1", "myproj-task2"]
+version = "0+local"
+classifiers = [
+    "Private :: Do Not Upload",
+]
+
+[tool.hatch.publish.index]
+# Lets make doubly sure this never goes to PyPi
+disable = true
+
+[tool.uv.sources]
+# These names must match the names as defined in the pyproject.toml of the workspace items,
+# *not* the workspace folder paths
+myproj = { workspace = true }
+myproj-task1 = { workspace = true }
+myproj-task2 = { workspace = true }
+
+[tool.uv.workspace]
+members = ["base", "task1", "task2"]
+

@@ -1,9 +1,10 @@
-[![.github/workflows/demo.yaml](https://github.com/effigies/hatchling-namespace-demo/actions/workflows/demo.yaml/badge.svg)](https://github.com/effigies/hatchling-namespace-demo/actions/workflows/demo.yaml)
+[![.github/workflows/demo.yaml](https://github.com/ashb/uv-workspace-hatchling-namespace-demo/actions/workflows/demo.yaml/badge.svg)](https://github.com/ashb/uv-workspace-hatchling-namespace-demo/actions/workflows/demo.yaml)
 
 # Namespace packaging demo
 
-This repository demonstrates using [hatchling][] and [hatch-vcs][] to generate namespace
-packages that reside within a submodule of a base package.
+This repository demonstrates using [hatchling] to generate namespace
+packages that reside within a submodule of a base package,
+and then how to integate that with [`uv workspace`s][uv-workspace].
 
 The logical module is:
 
@@ -16,12 +17,12 @@ myproj  # Provided by myproj package
 ```
 
 This repository demonstrates that these can be provided by independent packages. It does
-this in a [monorepo][], also demonstrating the using multiple `pyproject.toml`-defined
+this in a [monorepo], also demonstrating the using multiple `pyproject.toml`-defined
 packages within a single repository.
 
-See the [CI results](https://github.com/effigies/hatchling-namespace-demo/actions/workflows/demo.yaml)
+See the [CI results](https://github.com/ashb/uv-workspace-hatchling-namespace-demo/actions/workflows/demo.yaml)
 to verify the functionality.
 
 [hatchling]: https://hatch.pypa.io/
-[hatch-vcs]: https://github.com/ofek/hatch-vcs
+[uv-workspace]: https://docs.astral.sh/uv/concepts/workspaces/
 [monorepo]: https://en.wikipedia.org/wiki/Monorepo
