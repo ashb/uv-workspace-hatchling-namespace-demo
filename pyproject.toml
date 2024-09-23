@@ -20,3 +20,5 @@ myproj-task2 = { workspace = true }
 [tool.uv.workspace]
 members = ["base", "task1", "task2"]
 
+[tool.ruff.lint]
+extend-select = ["S101"]
